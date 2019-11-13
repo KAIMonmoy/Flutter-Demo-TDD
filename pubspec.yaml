@@ -1,0 +1,36 @@
+name: number_trivia
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Service Locator
+  get_it: ^3.0.3
+  # Bloc for State Management
+  flutter_bloc: ^2.0.0
+  # Value Equality
+  equatable: ^0.6.1
+  # Functional Programming
+  dartz: ^0.8.8
+  # Remote API
+  connectivity: ^0.4.5+3
+  http: ^0.12.0+2
+  # Local Cache
+  shared_preferences: ^0.5.4+5
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^4.1.1
+
+flutter:
+  uses-material-design: true
