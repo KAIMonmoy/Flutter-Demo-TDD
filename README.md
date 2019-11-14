@@ -6,6 +6,6 @@ A simple Numbers Trivia App.
 - Test-Driven-Development
 - Clean Architecture
 
-## Rsources
+## Resources
 - https://www.youtube.com/playlist?list=PLB6lc7nQ1n4iYGE_khpXRdJkJEp9WOech
 - https://www.youtube.com/watch?v=2dKZ-dWaCiU
