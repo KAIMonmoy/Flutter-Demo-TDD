@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
+import 'package:number_trivia/core/error/exceptions.dart';
 
 import '../models/number_trivia_model.dart';
 
@@ -23,22 +24,24 @@ class NumberTriviaRemoteDataSourceImplementation
 
   NumberTriviaRemoteDataSourceImplementation({@required this.remoteDataSource});
 
-  @override
-  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) async {
+  Future<NumberTriviaModel> _getTriviaFromUrl(String url) async {
     final response = await remoteDataSource.get(
-      'http://numbersapi.com/$number',
+      url,
       headers: {'Content-Type': 'application/json'},
     );
 
-    final numberTriviaModel =
-        NumberTriviaModel.fromJson(json.decode(response.body));
+    if (response.statusCode == 200) {
+      return NumberTriviaModel.fromJson(json.decode(response.body));
+    }
 
-    return Future.value(numberTriviaModel);
+    throw ServerException();
   }
 
   @override
-  Future<NumberTriviaModel> getRandomNumberTrivia() {
-    // TODO: implement getRandomNumberTrivia
-    return null;
-  }
+  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) async =>
+      await _getTriviaFromUrl('http://numbersapi.com/$number');
+
+  @override
+  Future<NumberTriviaModel> getRandomNumberTrivia() async =>
+      await _getTriviaFromUrl('http://numbersapi.com/random');
 }
