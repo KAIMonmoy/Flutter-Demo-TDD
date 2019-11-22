@@ -224,4 +224,6 @@ void main() {
       },
     );
   });
+
+  bloc.close();
 }
